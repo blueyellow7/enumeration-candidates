@@ -19,18 +19,17 @@ end
 
 
 def qualified_candidates(candidates)
-  # Select all candidates that have the following qualifications: 
   candidates.select do |element|
-      # Have experience
-    candidate[:years_of_experience] > 0 &&  
-      # Have 100+ Github points
-    candidate[:github_points] >= 100 && 
-      # Know Ruby or Python
+    # Have experience
+    element[:years_of_experience] > 0 &&  
+    # Have 100+ Github points
+    element[:github_points] >= 100 && 
+    # Know Ruby or Python
     (element[:languages].include?('Ruby') || element[:languages].include?('Python')) && 
-      # Applied in the last 15 days
+    # Applied in the last 15 days
     (Date.today - element[:date_applied]).to_i <= 15 && 
-      # Are 18+ yo
-    element[:age]>17
+    # Are 18+ yo
+    element[:age] > 17
   end
 end
 
